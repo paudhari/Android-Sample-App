@@ -1,0 +1,32 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto" >
+<data>
+    <variable
+        name="singlePhoto"
+        type="com.hari.model.PhotosResponse" />
+    <variable name="callback" type="com.hari.callbacks.PhotosClickCallback"/>
+
+</data>
+<android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="5dp">
+
+    <RelativeLayout
+        android:id="@+id/rtlParent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:onClick="@{(v) ->  callback.onClick(singlePhoto, v)}"
+            android:id="@+id/imgPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@android:color/white"
+            android:scaleType="fitXY"
+            app:imageUrl="@{singlePhoto.imageUrl}"
+            android:transitionName="photo" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
+</layout>

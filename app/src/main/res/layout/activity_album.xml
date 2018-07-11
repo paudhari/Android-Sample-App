@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="isLoading"
+            type="boolean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/cardview_light_background"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            app:title="@string/albums"
+            app:titleTextColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/loading_albums"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/loading_albums"
+            android:textAlignment="center"
+            app:visibleGone="@{isLoading}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/cardview_light_background"
+            android:orientation="vertical"
+            app:visibleGone="@{!isLoading}">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/albums_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/albums"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
